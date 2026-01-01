@@ -251,7 +251,32 @@ function prev(){
     pages[current].classList.remove('flipped');
   }
 }
-</script>
+<script>
+let pages = Array.from(document.querySelectorAll('.page')).reverse();
+let current = 0;
 
+pages.forEach((page, i) => {
+  page.style.zIndex = pages.length - i;
+});
+
+function start(){
+  document.getElementById('music').play();
+  next();
+}
+
+function next(){
+  if(current < pages.length){
+    pages[current].classList.add('flipped');
+    current++;
+  }
+}
+
+function prev(){
+  if(current > 0){
+    current--;
+    pages[current].classList.remove('flipped');
+  }
+}
+</script>
 </body>
 </html>
